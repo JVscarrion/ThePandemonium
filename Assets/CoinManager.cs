@@ -42,7 +42,7 @@ public class CoinManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -83,7 +83,7 @@ public class CoinManager : MonoBehaviour
     {
         if (warningText != null)
         {
-            warningText.text = ""; // Clear the warning text
+            warningText.text = ""; 
         }
     }
 }
