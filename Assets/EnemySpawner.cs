@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Array of waves
+    
     public Wave[] waves;
     public Button waveStartButton;
     public float timeBetweenWave;
-    // Spawn point for enemies
+   
     public Transform spawnPoint;
     public Transform[] enemyTransforms;
     private int currentWaveIndex = 0;
     private bool waveInProgress = false;
 
-    // Event to signal the end of a wave
+   
     public event Action WaveEnded;
 
     private void Start()
     {
-        // Subscribe to the WaveEnded event
+        
         WaveEnded += OnWaveEnded;
     }
 
@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(duration);
         waveInProgress = false;
         currentWaveIndex++;
-        WaveEnded?.Invoke(); // Signal the end of the wave
+        WaveEnded?.Invoke(); 
     }
 
     public void SpawnWave(EnemyType[] enemyTypes)
@@ -84,14 +84,14 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject spawnedEnemy = Instantiate(enemyType.prefab, spawnPoint.position, Quaternion.identity);
                 spawnedEnemy.transform.SetParent(spawnPoint.transform);
-                yield return new WaitForSeconds(1f / enemyType.spawnRate); // Adjust spawn rate
+                yield return new WaitForSeconds(1f / enemyType.spawnRate); 
             }
         }
     }
 
     public bool AllEnemiesDestroyed()
     {
-        enemyTransforms = spawnPoint.GetComponentsInChildren<Transform>(); // Get all child transforms
+        enemyTransforms = spawnPoint.GetComponentsInChildren<Transform>(); 
 
         if(enemyTransforms.Length == 1)
         {
@@ -102,10 +102,10 @@ public class EnemySpawner : MonoBehaviour
         return false;
     }
 
-    // Method to handle the end of the wave
+   
     private void OnWaveEnded()
     {
-        // Handle the end of the wave
+       
     }
 }
 
@@ -121,5 +121,5 @@ public class EnemyType
 {
     public GameObject prefab;
     public int count;
-    public float spawnRate; // Added spawn rate field
+    public float spawnRate; 
 }
