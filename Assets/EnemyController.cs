@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform track; // Parent object containing child waypoints
+    public Transform track; 
     public float moveSpeed = 5f;
     public bool isSlowed;
    
@@ -27,8 +27,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            // Enemy reached the end of the track
-            // You can handle this as needed, like destroying the enemy
+            
             Destroy(gameObject);
         }
        
