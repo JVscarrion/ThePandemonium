@@ -39,12 +39,12 @@ public class EnemyController : MonoBehaviour
         Vector3 direction = (targetPosition - transform.position).normalized;
         transform.Translate(direction * moveSpeed * Time.deltaTime);
 
-        // Check if the enemy is close enough to the current waypoint
+        
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            // Move to the next waypoint
+            
             currentWaypointIndex++;
         }
     }
-    // You can implement other methods like HitTarget and Die as needed
+   
 }
