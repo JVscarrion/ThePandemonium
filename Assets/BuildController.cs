@@ -31,7 +31,7 @@ public class BuildController : MonoBehaviour
            // if (!EventSystem.current.IsPointerOverGameObject())
            // {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos = SnapToGrid(mousePos); // Snap to grid
+                mousePos = SnapToGrid(mousePos); 
                 spawnedPrefab = Instantiate(prefab, mousePos, prefab.transform.rotation);
                 isDragging = true;
            // }
@@ -46,7 +46,7 @@ public class BuildController : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos = SnapToGrid(mousePos); // Snap to grid
+                mousePos = SnapToGrid(mousePos); 
                 prefab.transform.position = mousePos;
                 //
                 if (IsValidPosition(mousePos))
@@ -61,7 +61,7 @@ public class BuildController : MonoBehaviour
                 }
                 else if (IsGround(mousePos))
                 {
-                    // Build
+                    
                     towerSprite1 = spawnedPrefab.transform.GetChild(4).gameObject.GetComponent<SpriteRenderer>();
                     towerSprite2 = towerSprite1.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
                     towerSprite3 = towerSprite1.gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
@@ -96,10 +96,10 @@ public class BuildController : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos = SnapToGrid(mousePos); // Snap to grid
+                mousePos = SnapToGrid(mousePos); 
                 if (IsValidPosition(mousePos))
                 {
-                    Destroy(spawnedPrefab); // Destroy the prefab if placed on a specific tag or layer
+                    Destroy(spawnedPrefab); 
                 }
                 else if(IsGround(mousePos))
                 {
@@ -128,14 +128,14 @@ public class BuildController : MonoBehaviour
     }
     private Vector2 SnapToGrid(Vector2 position)
     {
-        // Define the size of each grid cell
+        
         float gridSize = gridMovementSize;
 
-        // Calculate the snapped position by rounding the coordinates to the nearest grid point
+        
         float snappedX = Mathf.Round(position.x / gridSize) * gridSize;
         float snappedY = Mathf.Round(position.y / gridSize) * gridSize;
 
-        // Create a new Vector2 with the snapped coordinates
+       
         Vector2 snappedPosition = new Vector2(snappedX, snappedY);
 
         return snappedPosition;
@@ -143,26 +143,26 @@ public class BuildController : MonoBehaviour
 
     private bool IsValidPosition(Vector2 position)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f); // Change 0.1f to the appropriate radius
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f); 
         foreach (Collider2D collider in colliders)
         {
             if (collider.gameObject.layer == LayerMask.NameToLayer("Tower"))
             {
-                return true; // Tower exists at the position, so the position is invalid
+                return true; 
             }
         }
-        return false; // No tower at the position, so the position is valid
+        return false; 
     }
     private bool IsGround(Vector2 position)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.25f); // Change 0.1f to the appropriate radius
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.25f); 
         foreach (Collider2D collider in colliders)
         {
             if (collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
-                return true; // Tower exists at the position, so the position is invalid
+                return true; 
             }
         }
-        return false; // No tower at the position, so the position is valid
+        return false; 
     }
 }
