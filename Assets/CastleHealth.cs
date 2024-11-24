@@ -18,7 +18,7 @@ public class CastleHealth : MonoBehaviour
     {
         currenthealth = numOfHearts;
     }
-    // Update is called once per frame
+   
     void Update()
     {
         if(currenthealth <= 0)
