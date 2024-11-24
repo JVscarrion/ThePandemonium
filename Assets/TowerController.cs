@@ -11,7 +11,7 @@ public class TowerController : MonoBehaviour
     public Transform firePoint;
     public GameObject fireSfx;
     public float attackRange = 5f;
-    public float attackRate = 2f; // Attacks per second
+    public float attackRate = 2f; 
     public int damage;
     public float circleColour;
 
@@ -20,7 +20,7 @@ public class TowerController : MonoBehaviour
     private GameObject rangeCircle;
     private GameObject targetEnemy;
 
-    // Variables specific to the Fire tower
+   
     [System.Serializable]
     public struct FireVariables
     {
@@ -30,7 +30,7 @@ public class TowerController : MonoBehaviour
     }
     public FireVariables fireVariables;
 
-    // Variables specific to the Ice tower
+   
     [System.Serializable]
     public struct IceVariables
     {
@@ -149,7 +149,7 @@ public class TowerController : MonoBehaviour
                     {
                         if (!enemyController.isSlowed)
                         {
-                            // Enemy is within the attack range and not already slowed
+                            
                             enemyController.moveSpeed -= iceVariables.iceSlowRate;
                             enemyController.isSlowed = true;
                             enemyController.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("FRun");
@@ -158,9 +158,9 @@ public class TowerController : MonoBehaviour
                     }
                     else if (wasInsideRange)
                     {
-                        // Enemy was inside the attack range but now outside, increase its speed
+                        
                         enemyController.moveSpeed += iceVariables.iceSlowRate;
-                        enemyController.isSlowed = false; // Reset the slow status
+                        enemyController.isSlowed = false; 
                         enemyController.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Run");
                         Debug.Log("Speed increased: " + enemyController.moveSpeed);
                     }
