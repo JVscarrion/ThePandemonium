@@ -17,7 +17,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (target == null)
         {
-            Destroy(gameObject); // If the target is lost, destroy the projectile
+            Destroy(gameObject); 
             return;
         }
 
@@ -29,7 +29,7 @@ public class ProjectileController : MonoBehaviour
         float distanceThisFrame = speed * Time.deltaTime;
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
 
-        // Check if the projectile is close enough to the target
+       
         if (direction.magnitude <= distanceThisFrame)
         {
             HitTarget();
@@ -38,7 +38,7 @@ public class ProjectileController : MonoBehaviour
 
     void HitTarget()
     {
-        // Do damage to the target or whatever action you want when the projectile hits
+        
         Destroy(gameObject);
         EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
